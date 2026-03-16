@@ -1,0 +1,89 @@
+{
+  "weather_api": {
+    "name": "Weather API",
+    "base_url": "https://api.weather.com",
+    "endpoint": "/v1/current",
+    "method": "GET",
+    "auth_required": true,
+    "required_headers": ["Authorization"],
+    "required_params": ["city"],
+    "common_errors": {
+      "400": "Missing or invalid query parameter (city required).",
+      "401": "Missing or invalid API key.",
+      "404": "Endpoint path incorrect.",
+      "500": "Weather service temporarily unavailable."
+    },
+    "example_request": {
+      "endpoint": "https://api.weather.com/v1/current?city=London",
+      "headers": {
+        "Authorization": "Bearer YOUR_API_KEY"
+      }
+    }
+  },
+
+  "user_api": {
+    "name": "User Management API",
+    "base_url": "https://api.example.com",
+    "endpoint": "/users",
+    "method": "GET",
+    "auth_required": false,
+    "required_headers": [],
+    "required_params": [],
+    "common_errors": {
+      "400": "Invalid request format.",
+      "404": "User endpoint not found.",
+      "500": "Internal server error."
+    },
+    "example_request": {
+      "endpoint": "https://api.example.com/users",
+      "headers": {}
+    }
+  },
+
+  "payment_api": {
+    "name": "Payment Processing API",
+    "base_url": "https://api.payments.com",
+    "endpoint": "/v2/charge",
+    "method": "POST",
+    "auth_required": true,
+    "required_headers": ["Authorization", "Content-Type"],
+    "required_body_fields": ["amount", "currency", "card_number"],
+    "common_errors": {
+      "400": "Invalid payment payload.",
+      "401": "Authentication failed.",
+      "402": "Payment declined.",
+      "500": "Payment gateway unavailable."
+    },
+    "example_request": {
+      "endpoint": "https://api.payments.com/v2/charge",
+      "headers": {
+        "Authorization": "Bearer YOUR_API_KEY",
+        "Content-Type": "application/json"
+      },
+      "body": {
+        "amount": 100,
+        "currency": "USD",
+        "card_number": "1234567890123456"
+      }
+    }
+  },
+
+  "product_api": {
+    "name": "Product Catalog API",
+    "base_url": "https://api.store.com",
+    "endpoint": "/products",
+    "method": "GET",
+    "auth_required": false,
+    "required_headers": [],
+    "required_params": ["category"],
+    "common_errors": {
+      "400": "Category parameter missing.",
+      "404": "Product endpoint not found.",
+      "500": "Database service unavailable."
+    },
+    "example_request": {
+      "endpoint": "https://api.store.com/products?category=electronics",
+      "headers": {}
+    }
+  }
+}
